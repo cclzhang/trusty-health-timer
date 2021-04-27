@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/task-timer/static/css/main.9d5b29c0.chunk.css",
+    "main.js": "/task-timer/static/js/main.aa9202a5.chunk.js",
+    "main.js.map": "/task-timer/static/js/main.aa9202a5.chunk.js.map",
+    "runtime-main.js": "/task-timer/static/js/runtime-main.89ae0727.js",
+    "runtime-main.js.map": "/task-timer/static/js/runtime-main.89ae0727.js.map",
+    "static/js/2.9d212909.chunk.js": "/task-timer/static/js/2.9d212909.chunk.js",
+    "static/js/2.9d212909.chunk.js.map": "/task-timer/static/js/2.9d212909.chunk.js.map",
+    "static/js/3.78b074a3.chunk.js": "/task-timer/static/js/3.78b074a3.chunk.js",
+    "static/js/3.78b074a3.chunk.js.map": "/task-timer/static/js/3.78b074a3.chunk.js.map",
+    "index.html": "/task-timer/index.html",
+    "static/css/main.9d5b29c0.chunk.css.map": "/task-timer/static/css/main.9d5b29c0.chunk.css.map",
+    "static/js/2.9d212909.chunk.js.LICENSE.txt": "/task-timer/static/js/2.9d212909.chunk.js.LICENSE.txt",
+    "static/media/logo.6ce24c58.svg": "/task-timer/static/media/logo.6ce24c58.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.89ae0727.js",
+    "static/js/2.9d212909.chunk.js",
+    "static/css/main.9d5b29c0.chunk.css",
+    "static/js/main.aa9202a5.chunk.js"
+  ]
+}
