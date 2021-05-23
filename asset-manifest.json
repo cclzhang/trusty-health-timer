@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/task-timer/static/css/main.9d5b29c0.chunk.css",
-    "main.js": "/task-timer/static/js/main.aa9202a5.chunk.js",
-    "main.js.map": "/task-timer/static/js/main.aa9202a5.chunk.js.map",
-    "runtime-main.js": "/task-timer/static/js/runtime-main.9c61adf8.js",
-    "runtime-main.js.map": "/task-timer/static/js/runtime-main.9c61adf8.js.map",
-    "static/js/2.9d212909.chunk.js": "/task-timer/static/js/2.9d212909.chunk.js",
-    "static/js/2.9d212909.chunk.js.map": "/task-timer/static/js/2.9d212909.chunk.js.map",
-    "static/js/3.50c33fec.chunk.js": "/task-timer/static/js/3.50c33fec.chunk.js",
-    "static/js/3.50c33fec.chunk.js.map": "/task-timer/static/js/3.50c33fec.chunk.js.map",
-    "index.html": "/task-timer/index.html",
-    "static/css/main.9d5b29c0.chunk.css.map": "/task-timer/static/css/main.9d5b29c0.chunk.css.map",
-    "static/js/2.9d212909.chunk.js.LICENSE.txt": "/task-timer/static/js/2.9d212909.chunk.js.LICENSE.txt",
-    "static/media/logo.6ce24c58.svg": "/task-timer/static/media/logo.6ce24c58.svg"
+    "main.css": "/trusty-health-timer/static/css/main.9d5b29c0.chunk.css",
+    "main.js": "/trusty-health-timer/static/js/main.aa9202a5.chunk.js",
+    "main.js.map": "/trusty-health-timer/static/js/main.aa9202a5.chunk.js.map",
+    "runtime-main.js": "/trusty-health-timer/static/js/runtime-main.636acc30.js",
+    "runtime-main.js.map": "/trusty-health-timer/static/js/runtime-main.636acc30.js.map",
+    "static/js/2.9d212909.chunk.js": "/trusty-health-timer/static/js/2.9d212909.chunk.js",
+    "static/js/2.9d212909.chunk.js.map": "/trusty-health-timer/static/js/2.9d212909.chunk.js.map",
+    "static/js/3.50c33fec.chunk.js": "/trusty-health-timer/static/js/3.50c33fec.chunk.js",
+    "static/js/3.50c33fec.chunk.js.map": "/trusty-health-timer/static/js/3.50c33fec.chunk.js.map",
+    "index.html": "/trusty-health-timer/index.html",
+    "static/css/main.9d5b29c0.chunk.css.map": "/trusty-health-timer/static/css/main.9d5b29c0.chunk.css.map",
+    "static/js/2.9d212909.chunk.js.LICENSE.txt": "/trusty-health-timer/static/js/2.9d212909.chunk.js.LICENSE.txt",
+    "static/media/logo.6ce24c58.svg": "/trusty-health-timer/static/media/logo.6ce24c58.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.9c61adf8.js",
+    "static/js/runtime-main.636acc30.js",
     "static/js/2.9d212909.chunk.js",
     "static/css/main.9d5b29c0.chunk.css",
     "static/js/main.aa9202a5.chunk.js"
