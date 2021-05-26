@@ -1,11 +1,16 @@
 
 
+import Display from './Display';
 import './Main.css';
 
 function Main() {
   return (
     <main>
-      <h1>hello world</h1>
+      {/* time display */}
+      <Display />
+      <button>set timer</button>
+      <button>play</button>
+      <button>stop</button>
     </main>
   );
 }

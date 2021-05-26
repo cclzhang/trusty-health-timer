@@ -1,0 +1,18 @@
+
+
+#info {
+  text-align: left;
+  position: absolute;
+  background: rgba(0, 0, 0, 0.8);
+  width: 70%;
+  left: 15%;
+  top: 15%;
+}
+
+li {
+  list-style: none;
+}
+
+p {
+  margin: 3% 0;
+}
