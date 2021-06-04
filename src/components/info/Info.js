@@ -3,6 +3,8 @@
 import './Info.css';
 
 function Info() {
+  
+
   return (
     <section className="invisible" id="info">
       <p>there are 2 rules everyone who stares at a computer all day should know</p>

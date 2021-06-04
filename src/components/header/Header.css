@@ -1,0 +1,30 @@
+
+
+header {
+  border: 1px solid paleturquoise;
+
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 50px;
+  height: 5%;
+}
+
+.logo {
+  border: 1px solid palegoldenrod;
+
+  width: 50px;
+}
+
+header div {
+  border: 1px solid palegoldenrod;
+
+  display: flex;
+}
+
+header div button {
+  /* min-width: 50px; */
+  width: 50px;
+
+  margin-left: 10px;
+}
