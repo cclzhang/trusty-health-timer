@@ -3,6 +3,7 @@
 // import Display from './Display';
 // import SetTimer from './SetTimer';
 
+// import React, { useRef } from 'react';
 import Info from '../info/Info';
 import './Main.css';
 
@@ -13,14 +14,10 @@ console.log(today.toLocaleTimeString('en-GB'));
 console.log(today.toLocaleTimeString());
 
 function Main() {
+
+
   return (
     <main>
-      {/* time display
-      <Display />
-      <SetTimer />
-      <button>set timer</button>
-      <button>play</button>
-    <button>stop</button> */}
       <div>
         <p>00:00:00</p>
       </div>

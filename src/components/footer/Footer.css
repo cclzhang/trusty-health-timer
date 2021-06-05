@@ -1,21 +1,7 @@
 
 footer { 
-  /* border: 1px solid paleturquoise; */
+  border: 1px solid paleturquoise;
   
   width: 100%;
   font-size: 1.3rem;
-}
-
-.time {
-  /* border: 1px solid blue; */
-  
-  margin-bottom: 3%;
-  font-size: 2.5rem;
-  color: #F4EED7;
-  font-weight: bold;
-  
-  /* border-bottom: 1px solid #F4EED7; */
-}
-
-footer p:last-child {
 }

@@ -26,7 +26,12 @@ body {
   font-size: 1.6rem;
 }
 
+button {
+  cursor: pointer;
+}
+
 a {
+  text-decoration: none;
   color: white;
 }
 

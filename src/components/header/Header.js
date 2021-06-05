@@ -1,11 +1,18 @@
 
 
-import '../info/Info';
-import '../settings/Settings';
+// import Info from '../info/Info';
+// import Settings from '../settings/Settings';
 import './Header.css';
+import { useRef } from 'react';
 
 
-function Header() {
+
+const Header = () => {
+  // const [showInfo, setShowInfo] = useState(false);
+  const componentRef = useRef();
+  
+  console.log(componentRef.current);
+
 
   const infoHandler = () =>{
     console.log("info")
