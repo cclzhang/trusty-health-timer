@@ -4,7 +4,7 @@
 // import SetTimer from './SetTimer';
 
 // import React, { useRef } from 'react';
-import Info from '../info/Info';
+// import Info from '../info/Info';
 import './Main.css';
 
 
@@ -38,7 +38,7 @@ function Main() {
         <p>music player</p>
       </div>
 
-      <Info />
+      {/* <Info /> */}
 
       <p className="time">{currentTime}</p>
     </main>

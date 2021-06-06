@@ -16,7 +16,12 @@
 
 
 
-.invisible {
-  display: none;
+.popUp {
+  text-align: left;
+  position: absolute;
+  background: rgba(0, 0, 0, 0.8);
+  width: 70%;
+  left: 15%;
+  top: 15%;
 }
 

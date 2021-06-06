@@ -6,7 +6,7 @@ function Info() {
   
 
   return (
-    <section className="invisible" id="info">
+    <section id="info" className="popUp">
       <p>there are 2 rules everyone who stares at a computer all day should know</p>
       <ul>
         <li>1) Every 20 mins take a 20 second break to look at somewhere 20 feet away</li>
