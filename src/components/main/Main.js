@@ -1,20 +1,13 @@
 
-
-// import Display from './Display';
-// import SetTimer from './SetTimer';
-
-// import React, { useRef } from 'react';
-// import Info from '../info/Info';
+import useVisibilityToggle from '../../containers/useVisibilityToggle';
+import StopBox from '../stop-box/StopBox';
 import './Main.css';
 
 
-const today = new Date();
-let currentTime = today.toLocaleTimeString('en-GB');
-console.log(today.toLocaleTimeString('en-GB'));
-console.log(today.toLocaleTimeString());
-
 function Main() {
-
+  const [StopBoxComponent, toggleStopBoxVisibility] = useVisibilityToggle(
+    <StopBox />
+  );
 
   return (
     <main>
@@ -24,23 +17,23 @@ function Main() {
 
       {/* input replaces div */}
       <input type="text" name="timer" id="timer"  placeholder="00:00:00" />
-      <label htmlFor="timer">enter time</label>
+      <p></p>
+      <label htmlFor="timer"></label>
       <p></p>
 
       {/* play/stop replaces set workday button */}
-      <button>set workday</button>
+      <button>add workday</button>
       <p></p>
+
+      {/* replaces workday btn */}
       <button>play</button>
-      <button>stop</button>
+      <button onClick={toggleStopBoxVisibility}>stop</button>
+      {StopBoxComponent}
 
       {/* music player popup when timer ends*/}
       <div>
         <p>music player</p>
       </div>
-
-      {/* <Info /> */}
-
-      <p className="time">{currentTime}</p>
     </main>
   );
 }

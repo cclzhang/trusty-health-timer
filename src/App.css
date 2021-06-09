@@ -25,3 +25,9 @@
   top: 15%;
 }
 
+footer { 
+  border: 1px solid paleturquoise;
+  
+  width: 100%;
+  font-size: 1.3rem;
+}
