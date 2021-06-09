@@ -20,7 +20,6 @@ function App() {
       <footer>
         <p>&copy; 2021 <a href="http://cecilezhang.com">xixi</a></p>
       </footer>
-      {/* testing out pull request */}
     </div>
   );
 }
