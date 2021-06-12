@@ -1,28 +1,38 @@
 
 import useVisibilityToggle from '../../containers/useVisibilityToggle';
 import StopBox from '../stop-box/StopBox';
+import TimerInput from '../timer-input/TimerInput';
+import TimerDisplay from '../timer-display/TimerDisplay';
 import './Main.css';
 
 
-function Main() {
+
+const Main = () => {
   const [StopBoxComponent, toggleStopBoxVisibility] = useVisibilityToggle(
     <StopBox />
   );
 
+  const [InputComponent, toggleInputVisibility] = useVisibilityToggle(
+    <TimerInput />
+  );
+
+  const [DisplayComponent, toggleDisplayVisibility] = useVisibilityToggle(
+    <TimerDisplay />, 
+    true
+  );
+
+  const toggleInputAndDisplay = () => {
+    toggleInputVisibility();
+    toggleDisplayVisibility();
+  }
+
   return (
     <main>
-      <div>
-        <p>00:00:00</p>
-      </div>
-
-      {/* input replaces div */}
-      <input type="text" name="timer" id="timer"  placeholder="00:00:00" />
-      <p></p>
-      <label htmlFor="timer"></label>
-      <p></p>
+      {DisplayComponent}
+      {InputComponent}
 
       {/* play/stop replaces set workday button */}
-      <button>add workday</button>
+      <button onClick={toggleInputAndDisplay}>add workday</button>
       <p></p>
 
       {/* replaces workday btn */}
