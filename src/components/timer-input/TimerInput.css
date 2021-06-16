@@ -1,0 +1,27 @@
+
+
+form {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 5% 0;
+}
+
+form button {
+  margin: 15px auto;
+}
+
+form div {
+  display: flex;
+  width: 30%;
+  align-items: center;
+}
+
+.timerInput {
+  text-align: right;
+  width: 100%;
+}
+
+label {
+  margin-left: 2px;
+}

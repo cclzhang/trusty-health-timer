@@ -1,9 +1,9 @@
 
+function TimerDisplay(props) {
 
-function TimerDisplay() {
   return (
     <div>
-      <p>00:00:00</p>
+      <p>{props.timer}</p>
     </div>
   );
 }
