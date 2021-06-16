@@ -1,6 +1,5 @@
 
 
-// import { useRef } from 'react';
 import useVisibilityToggle from '../../containers/useVisibilityToggle';
 
 import Info from '../info/Info';
@@ -20,16 +19,21 @@ const Header = () => {
     <Settings />
   );
 
-  // const componentRef = useRef();
-  
-  // console.log(componentRef.current);
+  const toggleInfoAndSettings = () => {
+    toggleInfoVisibility();
+    toggleSettingsVisibility();
+  }
 
   return (
     <header>
       <a href="." className="logo">logo</a>
       <div>
-        <button className="infoBtn" name="infoBtn" onClick={toggleInfoVisibility}>i</button>
-        <button className="settingsBtn" name="settingsBtn" onClick={toggleSettingsVisibility}>s</button>
+        <button className="infoBtn" name="infoBtn" onClick={
+          SettingsComponent ? toggleInfoAndSettings : toggleInfoVisibility
+          }>i</button>
+        <button className="settingsBtn" name="settingsBtn" onClick={
+          InfoComponent ? toggleInfoAndSettings : toggleSettingsVisibility
+          }>s</button>
       </div>
       {InfoComponent}
       {SettingsComponent}

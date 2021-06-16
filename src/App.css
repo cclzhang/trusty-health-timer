@@ -20,9 +20,21 @@
   text-align: left;
   position: absolute;
   background: rgba(0, 0, 0, 0.8);
-  width: 70%;
-  left: 15%;
+  width: 110%;
+  left: -5%;
   top: 15%;
+  max-height: 70%;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+}
+
+.popUp::-webkit-scrollbar {
+    width: 7px;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.popUp::-webkit-scrollbar-thumb {
+    background: rgba(119, 119, 119, 0.5);
 }
 
 footer { 

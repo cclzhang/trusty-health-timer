@@ -4,7 +4,6 @@ import './Info.css';
 
 function Info() {
   
-
   return (
     <section id="info" className="popUp">
       <p>there are 2 rules everyone who stares at a computer all day should know</p>
