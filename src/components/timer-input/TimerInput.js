@@ -2,10 +2,10 @@ import './TimerInput.css';
 import { useState } from 'react';
 
 
-function TimerInput(props) {
-  const [hrs, setHrs] = useState('0');
-  const [mins, setMins] = useState('0');
-  const [secs, setSecs] = useState('0');
+function TimerInput({setTimer, setHrs, hrs, setMins, mins, setSecs, secs, toggle}) {
+  // const [hrs, setHrs] = useState('0');
+  // const [mins, setMins] = useState('0');
+  // const [secs, setSecs] = useState('0');
   
   console.log(hrs, mins, secs);
   const hrsRegex = "^(1[0-6]|[1-9])$";
@@ -26,7 +26,7 @@ function TimerInput(props) {
     else if (e.target.value === '') {
       setMins('0');
     }
-    console.log(mins);
+    // console.log(mins);
   }
 
   const handleSecs = (e) => {
@@ -54,8 +54,8 @@ function TimerInput(props) {
       seconds = '0' + secs;
     }
 
-    props.setTimer(`${hours}:${minutes}:${seconds}`);
-    props.toggle();
+    setTimer(`${hours}:${minutes}:${seconds}`);
+    toggle();
   }
 
   return (
