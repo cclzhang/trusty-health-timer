@@ -1,5 +1,6 @@
 
 import useVisibilityToggle from '../../containers/useVisibilityToggle';
+import Counter from '../../containers/Counter';
 import StopBox from '../stop-box/StopBox';
 import TimerInput from '../timer-input/TimerInput';
 import TimerDisplay from '../timer-display/TimerDisplay';
@@ -26,12 +27,54 @@ const Main = () => {
     setToggleInput(true);
   }
 
-  const [countdown, setCountdown] = useState(timer);
-
-  const handlePlay = () => {
-
+  const togglePlayPause = () => {
+    togglePlay();
+    togglePause();
   }
 
+
+
+  const handlePlay = () => {
+    let newHrs = parseInt(hrs);
+    let newMins = parseInt(mins);
+    let newSecs = parseInt(secs);
+
+    const interval = setInterval(()=>{
+      // if new seconds > 0
+      if (newSecs > 0) {
+        newSecs--;
+        setSecs(newSecs);
+      } else {
+      // new seconds === 0 and newMins > 0
+        if (newMins > 0) {
+          newMins--;
+          setMins(newMins);
+          newSecs = 59;
+          setSecs(newSecs);
+        } else {
+          // if newMins === 0 and newHrs > 0
+          if (newHrs > 0) {
+            newHrs--;
+            setHrs(newHrs);
+            newMins = 59;
+            newSecs = 59;
+            setMins(newMins);
+            setSecs(newSecs); 
+          }
+        }
+      }
+
+      // if everything is 0
+      if ((newSecs + newMins + newHrs) === 0) {
+        console.log("done!");
+        clearInterval(interval);
+      }
+    }, 1000)
+
+  }
+  const handlePause =()=>{
+    
+  }
 
   const [StopBoxComponent, toggleStopBoxVisibility] = useVisibilityToggle(
     <StopBox />
@@ -39,7 +82,6 @@ const Main = () => {
 
   const [InputComponent, toggleInputVisibility] = useVisibilityToggle(
     <TimerInput 
-      setTimer={setTimer} 
       hrs={hrs}
       setHrs={setHrs}
       mins={mins}
@@ -51,8 +93,27 @@ const Main = () => {
   );
 
   const [DisplayComponent, toggleDisplayVisibility] = useVisibilityToggle(
-    <TimerDisplay timer={timer}/>, 
+    <TimerDisplay 
+      hrs={hrs}
+      mins={mins}
+      secs={secs}
+    />,
     true
+  );
+
+  const [play, togglePlay] = useVisibilityToggle(
+    <button onClick={()=>{
+      handlePlay();
+      togglePlayPause();
+    }}>play</button>,
+    true
+  );
+
+  const [pause, togglePause] = useVisibilityToggle(
+    <button onClick={()=>{
+      handlePause();
+      togglePlayPause();
+    }}>pause</button>
   );
 
 
@@ -68,7 +129,9 @@ const Main = () => {
 
       {/* replaces workday btn */}
 
-      <button onClick={handlePlay}>play</button>
+      {/* <button onClick={handlePlay}>play</button> */}
+      {play}
+      {pause}
       <button onClick={toggleStopBoxVisibility}>stop</button>
       {StopBoxComponent}
 
