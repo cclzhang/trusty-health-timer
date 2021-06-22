@@ -12,6 +12,7 @@ import { useState } from 'react';
 const Main = () => {
   const [timer, setTimer] = useState('00:00:00');
   const [toggleInput, setToggleInput] = useState(false);
+  // const [isPaused, setIsPaused] = useState(false);
 
   const [hrs, setHrs] = useState('0');
   const [mins, setMins] = useState('0');
@@ -32,14 +33,17 @@ const Main = () => {
     togglePause();
   }
 
-
+  let isPaused = false;
 
   const handlePlay = () => {
     let newHrs = parseInt(hrs);
     let newMins = parseInt(mins);
     let newSecs = parseInt(secs);
+    
 
     const interval = setInterval(()=>{
+      
+      // timer
       // if new seconds > 0
       if (newSecs > 0) {
         newSecs--;
@@ -63,7 +67,7 @@ const Main = () => {
           }
         }
       }
-
+  
       // if everything is 0
       if ((newSecs + newMins + newHrs) === 0) {
         console.log("done!");
@@ -72,8 +76,12 @@ const Main = () => {
     }, 1000)
 
   }
-  const handlePause =()=>{
-    
+
+  const handlePause = () =>{
+    // if(!isPaused) {
+    //   isPaused = true;
+    // }
+    // clearInterval(interval);
   }
 
   const [StopBoxComponent, toggleStopBoxVisibility] = useVisibilityToggle(
@@ -103,8 +111,10 @@ const Main = () => {
 
   const [play, togglePlay] = useVisibilityToggle(
     <button onClick={()=>{
+      // setIsPaused(true);
       handlePlay();
       togglePlayPause();
+      // console.log(isPaused);
     }}>play</button>,
     true
   );
@@ -113,6 +123,7 @@ const Main = () => {
     <button onClick={()=>{
       handlePause();
       togglePlayPause();
+      console.log(isPaused);
     }}>pause</button>
   );
 
@@ -130,8 +141,7 @@ const Main = () => {
       {/* replaces workday btn */}
 
       {/* <button onClick={handlePlay}>play</button> */}
-      {play}
-      {pause}
+      {play ? play : pause}
       <button onClick={toggleStopBoxVisibility}>stop</button>
       {StopBoxComponent}
 
