@@ -5,14 +5,13 @@ import StopBox from '../stop-box/StopBox';
 import TimerInput from '../timer-input/TimerInput';
 import TimerDisplay from '../timer-display/TimerDisplay';
 import './Main.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 
 
 const Main = () => {
-  const [timer, setTimer] = useState('00:00:00');
   const [toggleInput, setToggleInput] = useState(false);
-  // const [isPaused, setIsPaused] = useState(false);
+  const [isActive, setIsActive] = useState(false);
 
   const [hrs, setHrs] = useState('0');
   const [mins, setMins] = useState('0');
@@ -28,60 +27,11 @@ const Main = () => {
     setToggleInput(true);
   }
 
-  const togglePlayPause = () => {
-    togglePlay();
-    togglePause();
-  }
-
-  let isPaused = false;
-
-  const handlePlay = () => {
-    let newHrs = parseInt(hrs);
-    let newMins = parseInt(mins);
-    let newSecs = parseInt(secs);
-    
-
-    const interval = setInterval(()=>{
-      
-      // timer
-      // if new seconds > 0
-      if (newSecs > 0) {
-        newSecs--;
-        setSecs(newSecs);
-      } else {
-      // new seconds === 0 and newMins > 0
-        if (newMins > 0) {
-          newMins--;
-          setMins(newMins);
-          newSecs = 59;
-          setSecs(newSecs);
-        } else {
-          // if newMins === 0 and newHrs > 0
-          if (newHrs > 0) {
-            newHrs--;
-            setHrs(newHrs);
-            newMins = 59;
-            newSecs = 59;
-            setMins(newMins);
-            setSecs(newSecs); 
-          }
-        }
-      }
-  
-      // if everything is 0
-      if ((newSecs + newMins + newHrs) === 0) {
-        console.log("done!");
-        clearInterval(interval);
-      }
-    }, 1000)
-
-  }
-
-  const handlePause = () =>{
-    // if(!isPaused) {
-    //   isPaused = true;
-    // }
-    // clearInterval(interval);
+  const reset = () => {
+    setSecs(0);
+    setMins(0);
+    setHrs(0);
+    setIsActive(false);
   }
 
   const [StopBoxComponent, toggleStopBoxVisibility] = useVisibilityToggle(
@@ -109,24 +59,49 @@ const Main = () => {
     true
   );
 
-  const [play, togglePlay] = useVisibilityToggle(
-    <button onClick={()=>{
-      // setIsPaused(true);
-      handlePlay();
-      togglePlayPause();
-      // console.log(isPaused);
-    }}>play</button>,
-    true
-  );
+  useEffect(() => {
+    let newHrs = parseInt(hrs);
+    let newMins = parseInt(mins);
+    let newSecs = parseInt(secs);
 
-  const [pause, togglePause] = useVisibilityToggle(
-    <button onClick={()=>{
-      handlePause();
-      togglePlayPause();
-      console.log(isPaused);
-    }}>pause</button>
-  );
+    let interval = null;
+    
+    if (isActive) {
+      if (newSecs + newMins + newHrs === 0) {
+        console.log('done');
+        clearInterval(interval);
+      }
+      interval = setInterval(()=>{
+        if (newSecs > 0) {
+          newSecs--;
+          setSecs(newSecs);
+        } else {
+          // new seconds === 0 and newMins > 0
+          if (newMins > 0) {
+            newMins--;
+            setMins(newMins);
+            newSecs = 59;
+            setSecs(newSecs);
+          } else {
+            // if newMins === 0 and newHrs > 0
+            if (newHrs > 0) {
+              newHrs--;
+              setHrs(newHrs);
+              newMins = 59;
+              newSecs = 59;
+              setMins(newMins);
+              setSecs(newSecs);
+            }
+          }
+        }
+        console.log(newSecs);
+      }, 1000)
+    } else if (!isActive && !(newSecs + newMins + newHrs === 0)) {
+      clearInterval(interval);
+    }
 
+    return () => clearInterval(interval);
+  }, [isActive]);
 
   return (
     <main>
@@ -140,9 +115,9 @@ const Main = () => {
 
       {/* replaces workday btn */}
 
-      {/* <button onClick={handlePlay}>play</button> */}
-      {play ? play : pause}
-      <button onClick={toggleStopBoxVisibility}>stop</button>
+      <button onClick={() => setIsActive(!isActive)}>play</button>
+      <button onClick={reset}>stop</button>
+
       {StopBoxComponent}
 
       {/* music player popup when timer ends*/}
