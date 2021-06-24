@@ -17,12 +17,21 @@ function App() {
   useEffect(() => {
     let interval = null;
     interval = setInterval(() =>{
-      setClockHr(new Date().getHours());
-      setClockMin(new Date().getMinutes());
-      // console.log(new Date().getSeconds());
+      if (new Date().getHours() < 10) {
+        setClockHr(`0${new Date().getHours()}`);
+      } else {
+        setClockHr(new Date().getHours());
+      }
+
+      if (new Date().getMinutes() < 10) {
+        setClockMin(`0${new Date().getMinutes()}`);
+      } else {
+        setClockMin(new Date().getMinutes());
+      }
+
     }, 1000)
     return (()=> clearInterval(interval))
-  })
+  }, [clockMin, clockHr])
   return (
     <div className="App">
       <Header />
