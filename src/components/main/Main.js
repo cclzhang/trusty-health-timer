@@ -67,12 +67,11 @@ const Main = () => {
     let interval = null;
     
     if (isActive) {
-      if (newSecs + newMins + newHrs === 0) {
-        console.log('done');
-        clearInterval(interval);
-      }
       interval = setInterval(()=>{
-        if (newSecs > 0) {
+        // clear interval when timer reaches zero
+        if (newSecs + newMins + newHrs === 0) {
+          setIsActive(!isActive);
+        } else if (newSecs > 0) {
           newSecs--;
           setSecs(newSecs);
         } else {
@@ -93,15 +92,15 @@ const Main = () => {
               setSecs(newSecs);
             }
           }
-        }
-        console.log(newSecs);
+        } 
+        console.log('h')
       }, 1000)
     } else if (!isActive && !(newSecs + newMins + newHrs === 0)) {
+      // when pause is clicked, stop interval
       clearInterval(interval);
-    }
-
+    } 
     return () => clearInterval(interval);
-  }, [isActive]);
+  });
 
   return (
     <main>
