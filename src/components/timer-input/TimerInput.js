@@ -2,8 +2,7 @@ import './TimerInput.css';
 
 
 function TimerInput({setHrs, hrs, setMins, mins, setSecs, secs, toggle}) {
-  
-  console.log(hrs, mins, secs);
+
   const hrsRegex = "^(1[0-6]|[1-9])$";
   const minsAndSecsRegex = "^[0-5]?[0-9]$";
   const handleHrs = (e) => {

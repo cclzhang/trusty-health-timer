@@ -113,7 +113,9 @@ const Main = () => {
 
       {/* replaces workday btn */}
 
-      <button onClick={() => setIsActive(!isActive)}>play</button>
+      <button onClick={() => setIsActive(!isActive)}>
+        {isActive ? 'pause' : 'play'}
+      </button>
       <button onClick={reset}>stop</button>
 
       {StopBoxComponent}
