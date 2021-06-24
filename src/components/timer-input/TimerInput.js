@@ -1,61 +1,40 @@
 import './TimerInput.css';
-import { useState } from 'react';
 
 
-function TimerInput(props) {
-  const [hrs, setHrs] = useState('0');
-  const [mins, setMins] = useState('0');
-  const [secs, setSecs] = useState('0');
-  
-  console.log(hrs, mins, secs);
+function TimerInput({setHrs, hrs, setMins, mins, setSecs, secs, toggle}) {
+
   const hrsRegex = "^(1[0-6]|[1-9])$";
   const minsAndSecsRegex = "^[0-5]?[0-9]$";
   const handleHrs = (e) => {
     if (e.target.value.match(hrsRegex)) {
-      setHrs(e.target.value);
+      setHrs(parseInt(e.target.value));
     }
     if (e.target.value === '') {
-      setHrs('0');
+      setHrs('');
     }
   }
 
   const handleMins = (e) => {
     if (e.target.value.match(minsAndSecsRegex)) {
-      setMins(e.target.value);
+      setMins(parseInt(e.target.value));
     }
     else if (e.target.value === '') {
-      setMins('0');
+      setMins('');
     }
-    console.log(mins);
   }
 
   const handleSecs = (e) => {
     if (e.target.value.match(minsAndSecsRegex)) {
-      setSecs(e.target.value);
+      setSecs(parseInt(e.target.value));
     }
     else if (e.target.value === '') {
-      setSecs('0');
+      setSecs('');
     }
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    let hours = parseInt(hrs);
-    let minutes = parseInt(mins);
-    let seconds = parseInt(secs);
-
-    if(hours < 10) {
-      hours = '0' + hrs;
-    }
-    if (minutes < 10) {
-      minutes = '0' + mins;
-    }
-    if (seconds < 10) {
-      seconds = '0' + secs;
-    }
-
-    props.setTimer(`${hours}:${minutes}:${seconds}`);
-    props.toggle();
+    toggle();
   }
 
   return (

@@ -1,16 +1,21 @@
 
 import useVisibilityToggle from '../../containers/useVisibilityToggle';
+import Counter from '../../containers/Counter';
 import StopBox from '../stop-box/StopBox';
 import TimerInput from '../timer-input/TimerInput';
 import TimerDisplay from '../timer-display/TimerDisplay';
 import './Main.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 
 
 const Main = () => {
-  const [timer, setTimer] = useState('00:00:00');
   const [toggleInput, setToggleInput] = useState(false);
+  const [isActive, setIsActive] = useState(false);
+
+  const [hrs, setHrs] = useState('0');
+  const [mins, setMins] = useState('0');
+  const [secs, setSecs] = useState('0');
 
   const toggleInputAndDisplay = () => {
     toggleInputVisibility();
@@ -22,20 +27,79 @@ const Main = () => {
     setToggleInput(true);
   }
 
+  const reset = () => {
+    setSecs(0);
+    setMins(0);
+    setHrs(0);
+    setIsActive(false);
+  }
 
   const [StopBoxComponent, toggleStopBoxVisibility] = useVisibilityToggle(
     <StopBox />
   );
 
   const [InputComponent, toggleInputVisibility] = useVisibilityToggle(
-    <TimerInput setTimer={setTimer} toggle={toggleInputAndDisplay}/>
+    <TimerInput 
+      hrs={hrs}
+      setHrs={setHrs}
+      mins={mins}
+      setMins={setMins}
+      secs={secs}
+      setSecs={setSecs}
+      toggle={toggleInputAndDisplay}
+    />
   );
 
   const [DisplayComponent, toggleDisplayVisibility] = useVisibilityToggle(
-    <TimerDisplay timer={timer}/>, 
+    <TimerDisplay 
+      hrs={hrs}
+      mins={mins}
+      secs={secs}
+    />,
     true
   );
 
+  useEffect(() => {
+    let newHrs = parseInt(hrs);
+    let newMins = parseInt(mins);
+    let newSecs = parseInt(secs);
+
+    let interval = null;
+    
+    if (isActive) {
+      interval = setInterval(()=>{
+        // clear interval when timer reaches zero
+        if (newSecs + newMins + newHrs === 0) {
+          setIsActive(!isActive);
+        } else if (newSecs > 0) {
+          newSecs--;
+          setSecs(newSecs);
+        } else {
+          // new seconds === 0 and newMins > 0
+          if (newMins > 0) {
+            newMins--;
+            setMins(newMins);
+            newSecs = 59;
+            setSecs(newSecs);
+          } else {
+            // if newMins === 0 and newHrs > 0
+            if (newHrs > 0) {
+              newHrs--;
+              setHrs(newHrs);
+              newMins = 59;
+              newSecs = 59;
+              setMins(newMins);
+              setSecs(newSecs);
+            }
+          }
+        } 
+      }, 1000)
+    } else if (!isActive && !(newSecs + newMins + newHrs === 0)) {
+      // when pause is clicked, stop interval
+      clearInterval(interval);
+    } 
+    return () => clearInterval(interval);
+  });
 
   return (
     <main>
@@ -49,8 +113,11 @@ const Main = () => {
 
       {/* replaces workday btn */}
 
-      <button>play</button>
-      <button onClick={toggleStopBoxVisibility}>stop</button>
+      <button onClick={() => setIsActive(!isActive)}>
+        {isActive ? 'pause' : 'play'}
+      </button>
+      <button onClick={reset}>stop</button>
+
       {StopBoxComponent}
 
       {/* music player popup when timer ends*/}
