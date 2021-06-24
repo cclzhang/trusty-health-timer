@@ -4,12 +4,6 @@ import Main from './components/main/Main';
 import './App.css';
 import { useEffect, useState } from 'react';
 
-
-const today = new Date();
-let currentTime = today.toLocaleTimeString('en-GB');
-console.log(today.toLocaleTimeString('en-GB'));
-console.log(today.toLocaleTimeString());
-
 function App() {
   const [clockHr, setClockHr] = useState(new Date().getHours());
   const [clockMin, setClockMin] = useState(new Date().getMinutes());

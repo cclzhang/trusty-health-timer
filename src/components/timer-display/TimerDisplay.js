@@ -16,9 +16,7 @@ function TimerDisplay({hrs, mins, secs}) {
   }
 
   return (
-    // <div>
-      <p>{`${hours}:${minutes}:${seconds}`}</p>
-    // </div>
+    <p>{`${hours}:${minutes}:${seconds}`}</p>
   );
 }
 

@@ -93,7 +93,6 @@ const Main = () => {
             }
           }
         } 
-        console.log('h')
       }, 1000)
     } else if (!isActive && !(newSecs + newMins + newHrs === 0)) {
       // when pause is clicked, stop interval

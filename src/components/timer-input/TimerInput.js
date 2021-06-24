@@ -22,7 +22,6 @@ function TimerInput({setHrs, hrs, setMins, mins, setSecs, secs, toggle}) {
     else if (e.target.value === '') {
       setMins('');
     }
-    // console.log(mins);
   }
 
   const handleSecs = (e) => {
