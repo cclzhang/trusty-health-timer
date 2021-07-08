@@ -5,7 +5,7 @@ import Counter from '../../containers/Counter';
 import StopBox from '../stop-box/StopBox';
 import TimerInput from '../timer-input/TimerInput';
 import TimerDisplay from '../timer-display/TimerDisplay';
-import MusicPlayer from '../../containers/MusicPlayer';
+import Player from '../../containers/player/Player';
 
 import './Main.css';
 
@@ -20,8 +20,9 @@ const Main = () => {
   const [mins, setMins] = useState('0');
   const [secs, setSecs] = useState('0');
 
-  const [healthTimer, setHealthTimer] = useState(0);
-  const [healthCountdown, setHealthCountdown] = useState(0);
+  const [healthyBreak, setHealthyBreak] = useState(0);
+  const [isOnBreak, setIsOnBreak] = useState(false);
+  const [breakType, setBreakType] = useState('');
 
   const toggleInputAndDisplay = () => {
     toggleInputVisibility();
@@ -53,7 +54,7 @@ const Main = () => {
       secs={secs}
       setSecs={setSecs}
       toggle={toggleInputAndDisplay}
-      setHealthTimer={setHealthTimer}
+      setHealthyBreak={setHealthyBreak}
     />
   );
 
@@ -66,7 +67,6 @@ const Main = () => {
     true
   );
 
-  
   useEffect(() => {
     let newHrs = parseInt(hrs);
     let newMins = parseInt(mins);
@@ -77,12 +77,16 @@ const Main = () => {
     
     if (isActive) {
       interval = setInterval(()=>{
-        if ((counter === healthTimer - 1200) || (counter === healthTimer - 2400)) {
+        if ((counter === healthyBreak - 1200) || (counter === healthyBreak - 2400)) {
           setIsActive(!isActive);
+          setIsOnBreak(true);
+          setBreakType('short');
         }
 
-        if (counter === healthTimer - 3600) {
+        if (counter === healthyBreak - 3600) {
           setIsActive(!isActive);
+          setIsOnBreak(true);
+          setBreakType('long');
         }
         console.log(counter);
         // clear interval when timer reaches zero
@@ -118,6 +122,7 @@ const Main = () => {
     return () => clearInterval(interval);
   });
 
+  console.log(isOnBreak)
   return (
     <main>
       {DisplayComponent}
@@ -138,7 +143,11 @@ const Main = () => {
       {StopBoxComponent}
 
       {/* music player popup when timer ends*/}
-      <MusicPlayer />
+      <Player 
+        isOnbreak={isOnBreak} 
+        setIsOnBreak={setIsOnBreak}
+        type={breakType}
+      />
     </main>
   );
 }
