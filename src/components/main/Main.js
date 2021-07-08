@@ -1,11 +1,14 @@
+import { useEffect, useState } from 'react';
 
 import useVisibilityToggle from '../../containers/useVisibilityToggle';
 import Counter from '../../containers/Counter';
 import StopBox from '../stop-box/StopBox';
 import TimerInput from '../timer-input/TimerInput';
 import TimerDisplay from '../timer-display/TimerDisplay';
+import MusicPlayer from '../../containers/MusicPlayer';
+
 import './Main.css';
-import { useEffect, useState } from 'react';
+
 
 
 
@@ -16,6 +19,9 @@ const Main = () => {
   const [hrs, setHrs] = useState('0');
   const [mins, setMins] = useState('0');
   const [secs, setSecs] = useState('0');
+
+  const [healthTimer, setHealthTimer] = useState(0);
+  const [healthCountdown, setHealthCountdown] = useState(0);
 
   const toggleInputAndDisplay = () => {
     toggleInputVisibility();
@@ -47,6 +53,7 @@ const Main = () => {
       secs={secs}
       setSecs={setSecs}
       toggle={toggleInputAndDisplay}
+      setHealthTimer={setHealthTimer}
     />
   );
 
@@ -59,15 +66,25 @@ const Main = () => {
     true
   );
 
+  
   useEffect(() => {
     let newHrs = parseInt(hrs);
     let newMins = parseInt(mins);
     let newSecs = parseInt(secs);
+    let counter = newSecs + newMins * 60 + newHrs * 3600;
 
     let interval = null;
     
     if (isActive) {
       interval = setInterval(()=>{
+        if ((counter === healthTimer - 1200) || (counter === healthTimer - 2400)) {
+          setIsActive(!isActive);
+        }
+
+        if (counter === healthTimer - 3600) {
+          setIsActive(!isActive);
+        }
+        console.log(counter);
         // clear interval when timer reaches zero
         if (newSecs + newMins + newHrs === 0) {
           setIsActive(!isActive);
@@ -121,9 +138,7 @@ const Main = () => {
       {StopBoxComponent}
 
       {/* music player popup when timer ends*/}
-      <div>
-        <p>music player</p>
-      </div>
+      <MusicPlayer />
     </main>
   );
 }
