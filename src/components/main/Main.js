@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react';
 
 import useVisibilityToggle from '../../containers/useVisibilityToggle';
-import Counter from '../../containers/Counter';
 import StopBox from '../stop-box/StopBox';
 import TimerInput from '../timer-input/TimerInput';
 import TimerDisplay from '../timer-display/TimerDisplay';
-import Player from '../../containers/player/Player';
+import Player from '../../containers/Player';
 
 import './Main.css';
 
@@ -71,24 +70,23 @@ const Main = () => {
     let newHrs = parseInt(hrs);
     let newMins = parseInt(mins);
     let newSecs = parseInt(secs);
-    let counter = newSecs + newMins * 60 + newHrs * 3600;
+    let counter = newSecs + (newMins * 60) + (newHrs * 3600) - 1;
 
     let interval = null;
     
     if (isActive) {
       interval = setInterval(()=>{
-        if ((counter === healthyBreak - 1200) || (counter === healthyBreak - 2400)) {
+        if ((healthyBreak - counter) % 540 === 0 && counter > 10) {
+          // and counter is bigger than 1h 30mins
+          setIsActive(!isActive);
+          setIsOnBreak(true);
+          setBreakType('long');
+        } else if ((healthyBreak - counter) % 180 === 0 && counter > 10) {
+          // and counter is bigger than 30mins
           setIsActive(!isActive);
           setIsOnBreak(true);
           setBreakType('short');
         }
-
-        if (counter === healthyBreak - 3600) {
-          setIsActive(!isActive);
-          setIsOnBreak(true);
-          setBreakType('long');
-        }
-        console.log(counter);
         // clear interval when timer reaches zero
         if (newSecs + newMins + newHrs === 0) {
           setIsActive(!isActive);
@@ -120,9 +118,8 @@ const Main = () => {
       clearInterval(interval);
     } 
     return () => clearInterval(interval);
-  });
+  }, [hrs, mins, secs, isActive, isOnBreak, healthyBreak]);
 
-  console.log(isOnBreak)
   return (
     <main>
       {DisplayComponent}
@@ -133,8 +130,6 @@ const Main = () => {
 
       <p></p>
 
-      {/* replaces workday btn */}
-
       <button onClick={() => setIsActive(!isActive)}>
         {isActive ? 'pause' : 'play'}
       </button>
@@ -143,11 +138,16 @@ const Main = () => {
       {StopBoxComponent}
 
       {/* music player popup when timer ends*/}
-      <Player 
-        isOnbreak={isOnBreak} 
-        setIsOnBreak={setIsOnBreak}
-        type={breakType}
-      />
+      {isOnBreak 
+        ? <Player
+          isOnBreak={isOnBreak}
+          setIsOnBreak={setIsOnBreak}
+          type={breakType}
+          setIsActive={setIsActive}
+        />
+        : null
+      }
+
     </main>
   );
 }

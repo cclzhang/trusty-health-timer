@@ -35,7 +35,6 @@ function TimerInput({setHrs, hrs, setMins, mins, setSecs, secs, toggle, setHealt
   const handleSubmit = (e) => {
     e.preventDefault();
     toggle();
-    console.log(hrs, mins, secs);
     setHealthyBreak(parseInt(hrs)*3600 + parseInt(mins)*60 + parseInt(secs));
   }
 
