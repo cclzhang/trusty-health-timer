@@ -38,6 +38,7 @@ const Main = () => {
     setMins(0);
     setHrs(0);
     setIsActive(false);
+    setToggleInput(false);
   }
 
   const [StopBoxComponent, toggleStopBoxVisibility] = useVisibilityToggle(
@@ -90,6 +91,7 @@ const Main = () => {
         // clear interval when timer reaches zero
         if (newSecs + newMins + newHrs === 0) {
           setIsActive(!isActive);
+          setToggleInput(false);
         } else if (newSecs > 0) {
           newSecs--;
           setSecs(newSecs);
