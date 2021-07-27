@@ -8,13 +8,13 @@ const Player = ({ type, isOnBreak, setIsOnBreak, setIsActive}) => {
   const [isMuted, setIsMuted] = useState(false);
   const [audioFile, setAudioFile] = useState(shortAudio1);
   const [seconds, setSeconds] = useState(0);
-  const [duration, setDuration] = useState(0);
+  const [duration, setDuration] = useState();
 
   const fetchVideoAndPlay = () => {
     if (isOnBreak && type === 'long') {
       fetch(longAudio1)
       .then(() => {
-        setAudioFile(longAudio1)
+        setAudioFile(longAudio1);
       })
       .then(()=> {
         return audioEl.current.play();
@@ -25,7 +25,7 @@ const Player = ({ type, isOnBreak, setIsOnBreak, setIsActive}) => {
     } else if (isOnBreak && type === 'short') {
       fetch(shortAudio1)
       .then(() => {
-        setAudioFile(shortAudio1)
+        setAudioFile(shortAudio1);
       })
       .then(() => {
         return audioEl.current.play();
@@ -35,17 +35,30 @@ const Player = ({ type, isOnBreak, setIsOnBreak, setIsActive}) => {
       })
     }
   }
+
   useEffect(() => {
-    fetchVideoAndPlay()
+    fetchVideoAndPlay();
     const interval = setInterval(() => {
       setSeconds(seconds => seconds + 1);
     }, 1000);
     return () => clearInterval(interval);
   }, [isOnBreak, type]);
 
+  const audioDuration = new Promise((resolve, reject) => {
+    audioEl.current.duration ? resolve() : reject()
+  });
+
+  audioDuration
+    .then(work => {
+      setDuration(Math.floor(audioEl.current.duration))
+      console.log(duration);
+    })
+    .catch(err => console.log(err))
+
   const audioEnd = () =>{
     setIsOnBreak(false)
     setIsActive(true);
+    setIsMuted(false);
   }
 
   return (
@@ -63,12 +76,7 @@ const Player = ({ type, isOnBreak, setIsOnBreak, setIsActive}) => {
       }
 
 
-      <p>time till break ends: {
-        type === 'short'
-          ? (20 - seconds).toString()
-          : (120 - seconds).toString()
-        } seconds</p>
-      {/* <p>duration: {audioEl.current.duration}</p> */}
+      <p>{seconds === 0 ? null : `${(duration - seconds).toString()} secs of breaktime left`}</p>
     </section>
   )
 }

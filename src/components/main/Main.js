@@ -5,6 +5,7 @@ import StopBox from '../stop-box/StopBox';
 import TimerInput from '../timer-input/TimerInput';
 import TimerDisplay from '../timer-display/TimerDisplay';
 import Player from '../../containers/Player';
+import TimerButtons from '../timer-buttons/TimerButtons';
 
 import './Main.css';
 
@@ -74,16 +75,18 @@ const Main = () => {
     let counter = newSecs + (newMins * 60) + (newHrs * 3600) - 1;
 
     let interval = null;
-    
+
     if (isActive) {
       interval = setInterval(()=>{
-        if ((healthyBreak - counter) % 540 === 0 && counter > 10) {
-          // and counter is bigger than 1h 30mins
+        if ((healthyBreak - counter) % 30 === 0 && counter > 45) {
+        // if ((healthyBreak - counter) % 3600 === 0 && counter > 5400) {
+          // break every hour and counter is bigger than 1h 30mins
           setIsActive(!isActive);
           setIsOnBreak(true);
           setBreakType('long');
-        } else if ((healthyBreak - counter) % 180 === 0 && counter > 10) {
-          // and counter is bigger than 30mins
+        } else if ((healthyBreak - counter) % 10 === 0 && counter > 15) {
+        // } else if ((healthyBreak - counter) % 1200 === 0 && counter > 1800) {
+          // break every 20mins and counter is bigger than 30mins
           setIsActive(!isActive);
           setIsOnBreak(true);
           setBreakType('short');
@@ -132,14 +135,6 @@ const Main = () => {
 
       <p></p>
 
-      <button onClick={() => setIsActive(!isActive)}>
-        {isActive ? 'pause' : 'play'}
-      </button>
-      <button onClick={reset}>stop</button>
-
-      {StopBoxComponent}
-
-      {/* music player popup when timer ends*/}
       {isOnBreak 
         ? <Player
           isOnBreak={isOnBreak}
@@ -147,8 +142,16 @@ const Main = () => {
           type={breakType}
           setIsActive={setIsActive}
         />
-        : null
+        : <TimerButtons
+          isActive={isActive}
+          setIsActive={setIsActive}
+          reset={reset}
+        />
       }
+
+      {StopBoxComponent}
+
+      {/* music player popup when timer ends*/}
 
     </main>
   );
