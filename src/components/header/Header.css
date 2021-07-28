@@ -1,7 +1,7 @@
 
 
 header {
-  border: 1px solid paleturquoise;
+  border: 1px solid palegoldenrod;
 
   display: flex;
   justify-content: space-between;
@@ -11,13 +11,13 @@ header {
 }
 
 .logo {
-  border: 1px solid palegoldenrod;
+  /* border: 1px solid palegoldenrod; */
 
   width: 50px;
 }
 
 header div {
-  border: 1px solid palegoldenrod;
+  /* border: 1px solid palegoldenrod; */
 
   display: flex;
 }

@@ -15,6 +15,7 @@ import './Main.css';
 const Main = () => {
   const [toggleInput, setToggleInput] = useState(false);
   const [isActive, setIsActive] = useState(false);
+  const [newTimer, setNewTimer] = useState(false);
 
   const [hrs, setHrs] = useState('0');
   const [mins, setMins] = useState('0');
@@ -56,6 +57,7 @@ const Main = () => {
       setSecs={setSecs}
       toggle={toggleInputAndDisplay}
       setHealthyBreak={setHealthyBreak}
+      setNewTimer={setNewTimer}
     />
   );
 
@@ -95,6 +97,7 @@ const Main = () => {
         if (newSecs + newMins + newHrs === 0) {
           setIsActive(!isActive);
           setToggleInput(false);
+          setNewTimer(false);
         } else if (newSecs > 0) {
           newSecs--;
           setSecs(newSecs);
@@ -135,18 +138,23 @@ const Main = () => {
 
       <p></p>
 
-      {isOnBreak 
+      {isOnBreak
         ? <Player
           isOnBreak={isOnBreak}
           setIsOnBreak={setIsOnBreak}
           type={breakType}
           setIsActive={setIsActive}
         />
-        : <TimerButtons
+        : null
+      }
+
+      {!isOnBreak && newTimer
+        ? <TimerButtons
           isActive={isActive}
           setIsActive={setIsActive}
           reset={reset}
         />
+        : null
       }
 
       {StopBoxComponent}

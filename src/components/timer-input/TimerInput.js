@@ -1,7 +1,7 @@
 import './TimerInput.css';
 
 
-function TimerInput({setHrs, hrs, setMins, mins, setSecs, secs, toggle, setHealthyBreak}) {
+function TimerInput({setHrs, hrs, setMins, mins, setSecs, secs, toggle, setHealthyBreak, setNewTimer}) {
 
   const hrsRegex = "^(1[0-6]|[1-9])$";
   const minsAndSecsRegex = "^[0-5]?[0-9]$";
@@ -34,8 +34,12 @@ function TimerInput({setHrs, hrs, setMins, mins, setSecs, secs, toggle, setHealt
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (parseInt(hrs) * 3600 + parseInt(mins) * 60 + parseInt(secs) === 0) {
+      return alert("please enter a time");
+    }
     toggle();
     setHealthyBreak(parseInt(hrs)*3600 + parseInt(mins)*60 + parseInt(secs));
+    setNewTimer(true);
   }
 
   return (
