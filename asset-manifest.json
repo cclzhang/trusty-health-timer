@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/trusty-health-timer/static/css/main.c6608a7d.chunk.css",
-    "main.js": "/trusty-health-timer/static/js/main.fe0c7396.chunk.js",
-    "main.js.map": "/trusty-health-timer/static/js/main.fe0c7396.chunk.js.map",
+    "main.js": "/trusty-health-timer/static/js/main.5b6b123f.chunk.js",
+    "main.js.map": "/trusty-health-timer/static/js/main.5b6b123f.chunk.js.map",
     "runtime-main.js": "/trusty-health-timer/static/js/runtime-main.f72d77e4.js",
     "runtime-main.js.map": "/trusty-health-timer/static/js/runtime-main.f72d77e4.js.map",
     "static/js/2.e533b3a6.chunk.js": "/trusty-health-timer/static/js/2.e533b3a6.chunk.js",
@@ -19,6 +19,6 @@
     "static/js/runtime-main.f72d77e4.js",
     "static/js/2.e533b3a6.chunk.js",
     "static/css/main.c6608a7d.chunk.css",
-    "static/js/main.fe0c7396.chunk.js"
+    "static/js/main.5b6b123f.chunk.js"
   ]
 }
