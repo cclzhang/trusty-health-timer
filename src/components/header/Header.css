@@ -16,13 +16,13 @@ header {
   width: 50px;
 }
 
-header div {
+nav ul {
   /* border: 1px solid palegoldenrod; */
 
   display: flex;
 }
 
-header div button {
+nav button {
   /* min-width: 50px; */
   width: 50px;
 

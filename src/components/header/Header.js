@@ -26,15 +26,23 @@ const Header = () => {
 
   return (
     <header>
-      <a href="." className="logo">logo</a>
-      <div>
-        <button className="infoBtn" name="infoBtn" onClick={
-          SettingsComponent ? toggleInfoAndSettings : toggleInfoVisibility
-          }>i</button>
-        <button className="settingsBtn" name="settingsBtn" onClick={
-          InfoComponent ? toggleInfoAndSettings : toggleSettingsVisibility
-          }>s</button>
-      </div>
+      <h1>
+        <a href="." className="logo">Healthy Pomo</a>
+      </h1>
+      <nav>
+        <ul>
+          <li>
+            <button className="infoBtn" name="infoBtn" onClick={
+              SettingsComponent ? toggleInfoAndSettings : toggleInfoVisibility
+            }>i</button>
+          </li>
+          <li>
+            <button className="settingsBtn" name="settingsBtn" onClick={
+              InfoComponent ? toggleInfoAndSettings : toggleSettingsVisibility
+            }>s</button>
+          </li>
+        </ul>
+      </nav>
       {InfoComponent}
       {SettingsComponent}
     </header>

@@ -46,21 +46,22 @@ const Player = ({ type, isOnBreak, setIsOnBreak, setIsActive}) => {
   }, [isOnBreak, type]);
 
   const audioDuration = new Promise((resolve, reject) => {
-    audioEl.current.duration ? resolve() : reject()
+    audioEl.current.duration ? resolve('audio duration found') : reject('no duration for audio')
   });
 
   audioDuration
-    .then(work => {
+    .then(message => {
       setDuration(Math.floor(audioEl.current.duration));
       setIsPlaying(true);
-      console.log(work);
+      console.log('this is the then ' + message);
     })
-    .catch(err => console.log(err))
+    .catch(errMessage => console.log('this is the then ' + errMessage))
 
   const audioEnd = () =>{
     setIsOnBreak(false)
     setIsActive(true);
     setIsMuted(false);
+    setIsPlaying(false);
   }
 
   return (
