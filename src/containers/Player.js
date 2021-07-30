@@ -9,6 +9,7 @@ const Player = ({ type, isOnBreak, setIsOnBreak, setIsActive}) => {
   const [audioFile, setAudioFile] = useState(shortAudio1);
   const [seconds, setSeconds] = useState(0);
   const [duration, setDuration] = useState();
+  const [isPlaying, setIsPlaying] = useState(false);
 
   const fetchVideoAndPlay = () => {
     if (isOnBreak && type === 'long') {
@@ -50,8 +51,9 @@ const Player = ({ type, isOnBreak, setIsOnBreak, setIsActive}) => {
 
   audioDuration
     .then(work => {
-      setDuration(Math.floor(audioEl.current.duration))
-      console.log(duration);
+      setDuration(Math.floor(audioEl.current.duration));
+      setIsPlaying(true);
+      console.log(work);
     })
     .catch(err => console.log(err))
 
@@ -76,7 +78,7 @@ const Player = ({ type, isOnBreak, setIsOnBreak, setIsActive}) => {
       }
 
 
-      <p>{seconds === 0 ? null : `${(duration - seconds).toString()} secs of breaktime left`}</p>
+      <p>{isPlaying ? `${(duration - seconds).toString()} secs of breaktime left` : null }</p>
     </section>
   )
 }

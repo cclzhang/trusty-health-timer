@@ -3,7 +3,7 @@
 import useVisibilityToggle from '../../containers/useVisibilityToggle';
 
 import Info from './info/Info';
-import Settings from '../settings/Settings';
+import Settings from './settings/Settings';
 
 import './Header.css';
 
