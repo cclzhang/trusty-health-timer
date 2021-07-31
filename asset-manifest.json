@@ -1,24 +1,25 @@
 {
   "files": {
-    "main.css": "/trusty-health-timer/static/css/main.c6608a7d.chunk.css",
-    "main.js": "/trusty-health-timer/static/js/main.5b6b123f.chunk.js",
-    "main.js.map": "/trusty-health-timer/static/js/main.5b6b123f.chunk.js.map",
-    "runtime-main.js": "/trusty-health-timer/static/js/runtime-main.f72d77e4.js",
-    "runtime-main.js.map": "/trusty-health-timer/static/js/runtime-main.f72d77e4.js.map",
-    "static/js/2.e533b3a6.chunk.js": "/trusty-health-timer/static/js/2.e533b3a6.chunk.js",
-    "static/js/2.e533b3a6.chunk.js.map": "/trusty-health-timer/static/js/2.e533b3a6.chunk.js.map",
-    "static/js/3.80e83042.chunk.js": "/trusty-health-timer/static/js/3.80e83042.chunk.js",
-    "static/js/3.80e83042.chunk.js.map": "/trusty-health-timer/static/js/3.80e83042.chunk.js.map",
+    "main.css": "/trusty-health-timer/static/css/main.3adc2b0f.chunk.css",
+    "main.js": "/trusty-health-timer/static/js/main.43bcc1df.chunk.js",
+    "main.js.map": "/trusty-health-timer/static/js/main.43bcc1df.chunk.js.map",
+    "runtime-main.js": "/trusty-health-timer/static/js/runtime-main.823958bd.js",
+    "runtime-main.js.map": "/trusty-health-timer/static/js/runtime-main.823958bd.js.map",
+    "static/js/2.5509d631.chunk.js": "/trusty-health-timer/static/js/2.5509d631.chunk.js",
+    "static/js/2.5509d631.chunk.js.map": "/trusty-health-timer/static/js/2.5509d631.chunk.js.map",
+    "static/js/3.71e2f211.chunk.js": "/trusty-health-timer/static/js/3.71e2f211.chunk.js",
+    "static/js/3.71e2f211.chunk.js.map": "/trusty-health-timer/static/js/3.71e2f211.chunk.js.map",
     "index.html": "/trusty-health-timer/index.html",
-    "static/css/main.c6608a7d.chunk.css.map": "/trusty-health-timer/static/css/main.c6608a7d.chunk.css.map",
-    "static/js/2.e533b3a6.chunk.js.LICENSE.txt": "/trusty-health-timer/static/js/2.e533b3a6.chunk.js.LICENSE.txt",
+    "static/css/main.3adc2b0f.chunk.css.map": "/trusty-health-timer/static/css/main.3adc2b0f.chunk.css.map",
+    "static/js/2.5509d631.chunk.js.LICENSE.txt": "/trusty-health-timer/static/js/2.5509d631.chunk.js.LICENSE.txt",
     "static/media/long1.bb10ad67.mp3": "/trusty-health-timer/static/media/long1.bb10ad67.mp3",
+    "static/media/lotus.32aa20ad.png": "/trusty-health-timer/static/media/lotus.32aa20ad.png",
     "static/media/short1.1ffe718a.mp3": "/trusty-health-timer/static/media/short1.1ffe718a.mp3"
   },
   "entrypoints": [
-    "static/js/runtime-main.f72d77e4.js",
-    "static/js/2.e533b3a6.chunk.js",
-    "static/css/main.c6608a7d.chunk.css",
-    "static/js/main.5b6b123f.chunk.js"
+    "static/js/runtime-main.823958bd.js",
+    "static/js/2.5509d631.chunk.js",
+    "static/css/main.3adc2b0f.chunk.css",
+    "static/js/main.43bcc1df.chunk.js"
   ]
 }
