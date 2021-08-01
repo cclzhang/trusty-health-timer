@@ -38,7 +38,7 @@
 }
 
 footer { 
-  border: 1px solid palegoldenrod;
+  border-top: 3px solid palegoldenrod;
   
   width: 100%;
   font-size: 1.3rem;
