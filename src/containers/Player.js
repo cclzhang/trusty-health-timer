@@ -2,7 +2,7 @@ import React, {useState, useRef, useEffect} from 'react';
 import shortAudio1 from '../assets/music/short1.mp3';
 import longAudio1 from '../assets/music/long1.mp3';
 
-const Player = ({ type, isOnBreak, setIsOnBreak, setIsActive}) => {
+const Player = ({ type, isOnBreak, setIsOnBreak, setIsActive, breakLengthShort, breakLengthLong}) => {
 
   const audioEl = useRef(null);
   const [isMuted, setIsMuted] = useState(false);
@@ -99,7 +99,7 @@ let duration2 = 0;
 
 
       {/* <p>{duration2 - seconds} secs of breaktime left</p> */}
-      <p>{type === 'short' ? 20 - seconds : 120 - seconds} secs of breaktime left</p>
+      <p>{type === 'short' ? breakLengthShort - seconds : breakLengthLong - seconds} secs of breaktime left</p>
       {/* <p>{seconds}</p> */}
     </section>
   )

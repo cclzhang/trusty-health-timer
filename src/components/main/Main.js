@@ -25,6 +25,12 @@ const Main = () => {
   const [isOnBreak, setIsOnBreak] = useState(false);
   const [breakType, setBreakType] = useState('');
 
+  const [breakLengthShort, setbreakLengthShort] = useState(20);
+  const [breakLengthLong, setbreakLengthLong] = useState(120);
+  const [longBreakInterval, setLongBreakInterval] = useState(3);
+  const [pomoLength, setPomoLength] = useState(2);
+
+
   const toggleInputAndDisplay = () => {
     toggleInputVisibility();
     toggleDisplayVisibility();
@@ -80,14 +86,13 @@ const Main = () => {
 
     if (isActive) {
       interval = setInterval(()=>{
-        if ((healthyBreak - counter) % 9 === 0 && counter > 13) {
-        // if ((healthyBreak - counter) % 3600 === 0 && counter > 5400) {
+        if ((healthyBreak - counter) % (pomoLength * longBreakInterval) === 0 && counter > ((pomoLength * longBreakInterval) * 1.5)) {
           // break every hour and counter is bigger than 1h 30mins
+          console.log((pomoLength * longBreakInterval) * 1.5, counter);
           setBreakType('long');
           setIsActive(!isActive);
           setIsOnBreak(true);
-        } else if ((healthyBreak - counter) % 3 === 0 && counter > 5) {
-        // } else if ((healthyBreak - counter) % 1200 === 0 && counter > 1800) {
+        } else if ((healthyBreak - counter) % pomoLength === 0 && counter > (pomoLength * 1.5)) {
           // break every 20mins and counter is bigger than 30mins
           setBreakType('short');
           setIsActive(!isActive);
@@ -144,6 +149,8 @@ const Main = () => {
           setIsOnBreak={setIsOnBreak}
           type={breakType}
           setIsActive={setIsActive}
+          breakLengthShort={breakLengthShort}
+          breakLengthLong={breakLengthLong}
         />
         : null
       }
