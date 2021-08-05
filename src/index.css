@@ -28,6 +28,13 @@ body {
 
 button {
   cursor: pointer;
+  background-color: inherit;
+  outline: none;
+  /* border: none; */
+  border-radius: 5px;
+  color: white;
+  padding: 10px;
+  font-family: inherit;
 }
 
 a {

@@ -39,12 +39,18 @@ const Header = () => {
           <li>
             <button className="infoBtn" name="infoBtn" onClick={
               SettingsComponent ? toggleInfoAndSettings : toggleInfoVisibility
-            }><LightBulbIcon size={16} /></button>
+            }>
+              <LightBulbIcon size={16} />
+              {/* info */}
+            </button>
           </li>
           <li>
             <button className="settingsBtn" name="settingsBtn" onClick={
               InfoComponent ? toggleInfoAndSettings : toggleSettingsVisibility
-            }><GearIcon size={16} /></button>
+            }>
+              <GearIcon size={16} />
+              {/* settings */}
+            </button>
           </li>
         </ul>
       </nav>

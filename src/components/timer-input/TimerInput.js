@@ -10,7 +10,7 @@ function TimerInput({setHrs, hrs, setMins, mins, setSecs, secs, toggle, setHealt
       setHrs(parseInt(e.target.value));
     }
     if (e.target.value === '') {
-      setHrs('');
+      setHrs('0');
     }
   }
 
@@ -19,7 +19,7 @@ function TimerInput({setHrs, hrs, setMins, mins, setSecs, secs, toggle, setHealt
       setMins(parseInt(e.target.value));
     }
     else if (e.target.value === '') {
-      setMins('');
+      setMins('0');
     }
   }
 
@@ -28,7 +28,7 @@ function TimerInput({setHrs, hrs, setMins, mins, setSecs, secs, toggle, setHealt
       setSecs(parseInt(e.target.value));
     }
     else if (e.target.value === '') {
-      setSecs('');
+      setSecs('0');
     }
   }
 

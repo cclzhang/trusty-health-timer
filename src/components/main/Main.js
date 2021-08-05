@@ -80,18 +80,18 @@ const Main = () => {
 
     if (isActive) {
       interval = setInterval(()=>{
-        if ((healthyBreak - counter) % 30 === 0 && counter > 45) {
+        if ((healthyBreak - counter) % 9 === 0 && counter > 13) {
         // if ((healthyBreak - counter) % 3600 === 0 && counter > 5400) {
           // break every hour and counter is bigger than 1h 30mins
+          setBreakType('long');
           setIsActive(!isActive);
           setIsOnBreak(true);
-          setBreakType('long');
-        } else if ((healthyBreak - counter) % 10 === 0 && counter > 15) {
+        } else if ((healthyBreak - counter) % 3 === 0 && counter > 5) {
         // } else if ((healthyBreak - counter) % 1200 === 0 && counter > 1800) {
           // break every 20mins and counter is bigger than 30mins
+          setBreakType('short');
           setIsActive(!isActive);
           setIsOnBreak(true);
-          setBreakType('short');
         }
         // clear interval when timer reaches zero
         if (newSecs + newMins + newHrs === 0) {
