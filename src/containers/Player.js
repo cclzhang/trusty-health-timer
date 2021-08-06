@@ -99,7 +99,13 @@ let duration2 = 0;
 
 
       {/* <p>{duration2 - seconds} secs of breaktime left</p> */}
-      <p>{type === 'short' ? breakLengthShort - seconds : breakLengthLong - seconds} secs of breaktime left</p>
+      <p>
+        {type === 'short' 
+          ? breakLengthShort - seconds 
+          : breakLengthLong - seconds
+        } secs of breaktime left
+      </p>
+      
       {/* <p>{seconds}</p> */}
     </section>
   )

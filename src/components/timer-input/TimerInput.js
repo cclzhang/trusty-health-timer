@@ -43,7 +43,7 @@ function TimerInput({setHrs, hrs, setMins, mins, setSecs, secs, toggle, setHealt
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="timerInputBox" onSubmit={handleSubmit}>
       <div>
         <input 
           type="text" 

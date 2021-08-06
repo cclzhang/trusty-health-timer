@@ -1,17 +1,17 @@
 
 
-form {
+.timerInputBox {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   margin: 5% 0;
 }
 
-form button {
+.timerInputBox button {
   margin: 15px auto;
 }
 
-form div {
+.timerInputBox div {
   display: flex;
   width: 30%;
   align-items: center;
